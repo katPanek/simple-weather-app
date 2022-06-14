@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+#app {
+  font-family: 'Segoe UI', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fbfbfb;
+  margin-top: 60px;
+}
+
+body {
+  background: linear-gradient(to right, #c0c0aa, #1cefff);
+}
+
+.app-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 4rem;
+  background: linear-gradient(45deg, #c6fcff, #e4fdff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn {
+  border: 0;
+  padding: 10px 24px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: 'Baloo 2', cursive;
+  font-size: 1rem;
+  background: #246b68;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.elevated-btn {
+  color: #f2f2f2;
+  background: #246b68;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+}
+
+.elevated-btn:hover {
+  background: #205856;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s;
+}
+
+.btn-icon {
+  background: transparent;
+  box-shadow: none;
+}
+
+.text-btn {
+  background: transparent;
+  padding: 0;
+  font-family: 'Segoe UI';
+  box-shadow: none;
+}
+
+.align-center {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
+
+.city-label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #f2f2f2;
+}
+
+.city-input-group :placeholder-shown ~ label {
+  font-size: 1.3rem;
+  cursor: text;
+  top: 20px;
+}
+
+.city-input-group {
+  position: relative;
+  padding: 24px 0 0;
+  margin-top: 10px;
+}
+
+.city-input-group ::placeholder {
+  display: none;
+}
+
+.city-input {
+  border: 0;
+  width: 320px;
+  border-bottom: 2px solid #f2f2f2;
+  outline: 0;
+  font-size: 1.2rem;
+  font-family: 'Segoe UI', sans-serif;
+  color: #2c3e50;
+  padding: 0 0 8px;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.city-input:focus {
+  padding-bottom: 6px;  
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #11998e, #38ef7d);
+  border-image-slice: 1;
+  background: transparent;
+}
+
+.city-input:focus ~ label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #11998e;
+  font-weight:700;    
+}
+
+.city-card-list-wrapper {
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+}
+
+.city-card-list {
+  display: flex;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  padding: 1.75rem;
+  gap: 1.5rem;
+}
+
+.city-card {
+  background: rgb(245, 245, 245);
+  color: #2c3e50;
+  border-radius: 20px;
+  box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
+  padding: 2.5rem 2rem;
+  width: 165px;
+  height: 275px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.city-card__name {
+  font-size: 1.5rem;
+}
+
+.city-card__temperature {
+  font-size: 5rem;
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.city-card__temperature__value {
+  font-weight: 700;
+  line-height: 4.5rem;
+}
+
+.city-card__temperature__c {
+  font-size: 0.5em;
+  font-weight: 500;
+}
+
+.city-card__icon img {
+  height: 100px;
+  margin-left: -16px;
+}
+
+.city-card__condition {
+  font-size: 0.9rem;
+  color: #53627c;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.city-card__delete {
+  position: absolute;
+  color: #2c3e50;
+  top: 0;
+  right: 0;
+  font-size: 25px;
+}
+
+.city-card__chevron {
+  font-size: 30px;
+  color: #fbfbfb;
+}
+
+.sort-cards-group {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-cards-group .lnr-sort-amount-asc {
+  font-size: 20px;
+}
+
+.segoe-symbol {
+  font-family: 'Segoe UI Symbol';
+}

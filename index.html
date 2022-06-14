@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/styles/loader.css">
+    <link rel="stylesheet" href="/src/styles/overlay.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Weather App</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="overlay overlay-loader" hidden="true">
+        <div class="overlay__inner">
+          <div class="overlay__content">
+            <div class="lds-ellipsis">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="align-center">
+        <h1 class="app-title">Simple Weather App</h1>
+        <div>
+          <span class="city-input-group">
+            <input type="search" name="city" class="city-input" placeholder=" " autocomplete="address-level2">
+            <label for="city" class="city-label">City</label>
+          </span>
+          <button class="btn elevated-btn city-search-btn">Add</button>
+        </div>
+
+        <div id="sort-cards-goup" hidden="true">
+          <div class="sort-cards-group">
+            <span class="lnr lnr-sort-amount-asc"></span>
+            <span>Sort by </span>
+            <button id="sort-name-btn" class="btn text-btn">city name</button>
+            <span class="segoe-symbol">&#xe230;</span>
+            <button id="sort-temperature-btn" class=" btn text-btn">temperature</button>
+          </div>
+        </div>
+        
+        <div class="city-card-list-wrapper">
+          <button id="city-card-left-btn" class="btn btn-icon" hidden="true"><span class="lnr lnr-chevron-left city-card__chevron"></span></button>
+          <div class="city-card-list">
+  
+          </div>
+          <button id="city-card-right-btn" class="btn btn-icon" hidden="true"><span class="lnr lnr-chevron-right city-card__chevron"></span></button>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="city-card" hidden="true" id="city-card-template" data-id="">
+      <div class="city-card__name"><span id="city"></span></div>
+      <div class="city-card__temperature">
+        <span class="city-card__temperature__value"><span id="temperature"></span></span>
+        <span class="city-card__temperature__c">&#176;C</span>
+      </div>
+      <div class="city-card__icon"><img id="weather-icon"></div>
+      <div class="city-card__condition"><span id="weather-condition"></span></div>
+      <button id="city-card-delete-btn" class="btn btn-icon city-card__delete"><span class="lnr lnr-cross"></span></button>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
