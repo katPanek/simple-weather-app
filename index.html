@@ -12,8 +12,8 @@
     <link rel="icon" type="image/svg+xml" href="/simple-weather-app/assets/favicon.63a26457.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Weather App</title>
-    <script type="module" crossorigin src="/simple-weather-app/assets/index.9c3fb71a.js"></script>
-    <link rel="stylesheet" href="/simple-weather-app/assets/index.828fb8e4.css">
+    <script type="module" crossorigin src="/simple-weather-app/assets/index.ed512970.js"></script>
+    <link rel="stylesheet" href="/simple-weather-app/assets/index.eb2ff216.css">
   </head>
   <body>
     <div id="app">
@@ -39,6 +39,11 @@
           <button class="btn elevated-btn city-search-btn">Add</button>
         </div>
 
+        <div class="error-alert" id="city-input-error-alert" hidden="true">
+          <span id="city-input-error-message"></span>
+          <button class=" btn btn-icon error-alert-close" id="city-input-error-close-btn"><span class="lnr lnr-cross"></span></button>
+        </div>
+
         <div id="sort-cards-goup" hidden="true">
           <div class="sort-cards-group">
             <span class="lnr lnr-sort-amount-asc"></span>
@@ -50,10 +55,13 @@
         </div>
         
         <div class="city-card-list-wrapper">
-          <button id="city-card-left-btn" class="btn btn-icon" hidden="true"><span class="lnr lnr-chevron-left city-card__chevron"></span></button>
           <div class="city-card-list">
   
           </div>
+        </div>
+        
+        <div class="city-card-list-chevrons-wrapper">
+          <button id="city-card-left-btn" class="btn btn-icon" hidden="true"><span class="lnr lnr-chevron-left city-card__chevron"></span></button>
           <button id="city-card-right-btn" class="btn btn-icon" hidden="true"><span class="lnr lnr-chevron-right city-card__chevron"></span></button>
         </div>
 
