@@ -7,6 +7,7 @@ const cityInputEl = document.querySelector('.city-input');
 const citySearchButtonEl = document.querySelector('.city-search-btn');
 
 const cityCardListEl = document.querySelector('.city-card-list');
+const cityCardListWrapperEl = document.querySelector('.city-card-list-wrapper');
 const cityCardTemplateEl = document.querySelector('#city-card-template');
 
 const cityCardLeftButtonEl = document.querySelector('#city-card-left-btn');
@@ -17,7 +18,13 @@ const sortByTemperatureButtonEl = document.querySelector('#sort-temperature-btn'
 
 const sortCardsEl = document.querySelector('#sort-cards-goup');
 
+const cityInputErrorAlertEl = document.querySelector('#city-input-error-alert');
+const cityInputErrorMessageEl = document.querySelector('#city-input-error-message');
+const cityInputErrorCloseButtonEl = document.querySelector('#city-input-error-close-btn');
+
+window.addEventListener('resize', setCityCardListChevronButtonDisabledState);
 citySearchButtonEl.addEventListener('click', onCitySearchClick);
+cityInputErrorCloseButtonEl.addEventListener('click', () => cityInputErrorAlertEl.hiden = true);
 sortByNameButtonEl.addEventListener('click', handleSortByNameClick);
 sortByTemperatureButtonEl.addEventListener('click', handleSortByTemperatureClick);
 cityInputEl.addEventListener('keypress', (event) => {
@@ -26,22 +33,48 @@ cityInputEl.addEventListener('keypress', (event) => {
   }
 });
 
-cityCardLeftButtonEl.addEventListener('click', () => cityCardListEl.scroll({
-  left: cityCardListEl.scrollLeft - 253,
-  behavior: 'smooth'
-}));
+cityCardLeftButtonEl.addEventListener('click', () => {
+  cityCardListEl.scroll({
+    left: cityCardListEl.scrollLeft - (274 + 24), // (card width + gap)
+    behavior: 'smooth'
+  })
 
-cityCardRightButtonEl.addEventListener('click', () => cityCardListEl.scroll({
-  left: cityCardListEl.scrollLeft + 253,
-  behavior: 'smooth'
-}));
+  setTimeout(setCityCardListChevronButtonDisabledState, 400);
+});
+
+cityCardRightButtonEl.addEventListener('click', () => {
+  cityCardListEl.scroll({
+    left: cityCardListEl.scrollLeft + (274 + 24), // (card width + gap)
+    behavior: 'smooth'
+  })
+  
+  setTimeout(setCityCardListChevronButtonDisabledState, 400);
+});
 
 cityCardListEl.addEventListener('wheel', (event) => {
   cityCardListEl.scroll({
     left: cityCardListEl.scrollLeft + event.deltaY,
     behavior: 'smooth'
   })
+
+  setTimeout(setCityCardListChevronButtonDisabledState, 400);
 });
+
+function setCityCardListChevronButtonDisabledState() {
+  if (cityCardListEl.scrollWidth > cityCardListWrapperEl.scrollWidth) {
+    cityCardLeftButtonEl.classList.remove('btn-disabled');
+    cityCardRightButtonEl.classList.remove('btn-disabled');
+  } else {
+    cityCardLeftButtonEl.classList.add('btn-disabled');
+    cityCardRightButtonEl.classList.add('btn-disabled');
+  }
+  if (cityCardListEl.scrollLeft <= 0) {
+    cityCardLeftButtonEl.classList.add('btn-disabled');
+  }
+  if (cityCardListEl.scrollLeft + cityCardListEl.clientWidth >= cityCardListEl.scrollWidth) {
+    cityCardRightButtonEl.classList.add('btn-disabled');
+  }
+}
 
 function handleSortByNameClick() {
   // filter out empty tag names
@@ -81,19 +114,20 @@ function getWeatherData(location) {
 
       loaderEl.hidden = true;
       setCardButtonsHiddenState(false);
+      setCityCardListChevronButtonDisabledState();
+      cityInputErrorAlertEl.hidden = true;
 
       id++;
     }).catch(error => {
       loaderEl.hidden = true;
-      console.error(error);
+      cityInputErrorAlertEl.hidden = false;
+      cityInputErrorMessageEl.innerHTML = error;
     });
 }
 
 function setCardButtonsHiddenState(isHidden) {
   cityCardLeftButtonEl.hidden = isHidden;
   cityCardRightButtonEl.hidden = isHidden;
-  // sortByNameButtonEl.hidden = isHidden;
-  // sortByTemperatureButtonEl.hidden = isHidden;
   sortCardsEl.hidden = isHidden;
 }
 
@@ -130,6 +164,9 @@ function createNewCard(id, city, temperature, icon, condition) {
 function handleDeleteCardButtonClick(id) {
   getCard(id).remove();
 
+  setCityCardListChevronButtonDisabledState();
+
+  // filter out empty tag names
   const cardNodes = [...cityCardListEl.childNodes].filter(e => e.tagName !== undefined);
   if (cardNodes.length === 0) setCardButtonsHiddenState(true);
 }
@@ -137,6 +174,3 @@ function handleDeleteCardButtonClick(id) {
 function getCard(id) {
   return document.querySelector(`#city-card-${id}`);
 }
-
-// TODO:
-// dodać scroll na touchpadzie

@@ -10,6 +10,7 @@
 
 body {
   background: linear-gradient(to right, #c0c0aa, #1cefff);
+  margin: 0;
 }
 
 .app-title {
@@ -31,6 +32,12 @@ body {
   background: #246b68;
   color: #ffffff;
   font-weight: 600;
+}
+
+.btn-disabled,
+.btn-disabled .city-card__chevron {
+  cursor: initial;
+  color: #afafaf;
 }
 
 .elevated-btn {
@@ -120,6 +127,20 @@ body {
   font-weight:700;    
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  background: transparent;
+  -webkit-text-fill-color: #2c3e50;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
 .city-card-list-wrapper {
   display: flex;
   align-items: center;
@@ -130,7 +151,7 @@ body {
   display: flex;
   overflow-x: hidden;
   scrollbar-width: none;
-  padding: 1.75rem;
+  padding: 1.75rem 4rem;
   gap: 1.5rem;
 }
 
@@ -140,8 +161,8 @@ body {
   border-radius: 20px;
   box-shadow: 0px 4px 8px 3px rgba(0, 0, 0, 0.15), 0px 1px 3px rgba(0, 0, 0, 0.3);
   padding: 2.5rem 2rem;
-  width: 165px;
-  height: 275px;
+  width: 190px;
+  height: 300px;
   flex-shrink: 0;
   position: relative;
 }
@@ -168,8 +189,7 @@ body {
 }
 
 .city-card__icon img {
-  height: 100px;
-  margin-left: -16px;
+  margin-left: -10px;
 }
 
 .city-card__condition {
@@ -205,4 +225,27 @@ body {
 
 .segoe-symbol {
   font-family: 'Segoe UI Symbol';
+}
+
+.error-alert {
+  position: relative;
+  padding: 0.75rem 4rem 0.75rem 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: border-box;
+  width: 400px;
+  min-height: 47px;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.error-alert-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.75rem 1.25rem;
+  color: inherit;
 }
